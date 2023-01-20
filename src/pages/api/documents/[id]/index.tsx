@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { env } from '../../../../env/server.mjs';
-import { BASE_URL } from '../../../../lib/constants';
+import { BASE_URL, BEARER_TOKEN } from '../../../../lib/constants';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'DELETE') {
@@ -13,7 +13,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${env.BEARER_TOKEN}`,
+        Authorization: `Bearer ${BEARER_TOKEN}`,
       },
     });
 

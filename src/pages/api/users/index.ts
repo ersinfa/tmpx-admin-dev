@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { env } from '../../../env/server.mjs';
-import { BASE_URL } from '../../../lib/constants';
+import { BASE_URL, BEARER_TOKEN } from '../../../lib/constants';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const users = await fetch(`${BASE_URL}/users`, {
@@ -9,7 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      Authorization: `Bearer ${env.BEARER_TOKEN}`,
+      Authorization: `Bearer ${BEARER_TOKEN}`,
     },
   });
 

@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { env } from '../../../../env/server.mjs';
-import { BASE_URL } from '../../../../lib/constants';
+import { BASE_URL, BEARER_TOKEN } from '../../../../lib/constants';
 import { Module, Session } from '../../../../lib/types';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -14,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${env.BEARER_TOKEN}`,
+        Authorization: `Bearer ${BEARER_TOKEN}`,
       },
     });
 
@@ -25,7 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${env.BEARER_TOKEN}`,
+        Authorization: `Bearer ${BEARER_TOKEN}`,
       },
     });
 
@@ -38,7 +38,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${env.BEARER_TOKEN}`,
+        Authorization: `Bearer ${BEARER_TOKEN}`,
       },
     });
 
@@ -56,7 +56,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${env.BEARER_TOKEN}`,
+        Authorization: `Bearer ${BEARER_TOKEN}`,
       },
     });
 
@@ -75,7 +75,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${env.BEARER_TOKEN}`,
+        Authorization: `Bearer ${BEARER_TOKEN}`,
       },
       body: req.body,
     });
@@ -91,7 +91,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
-            Authorization: `Bearer ${env.BEARER_TOKEN}`,
+            Authorization: `Bearer ${BEARER_TOKEN}`,
           },
           body: JSON.stringify(module),
         });
@@ -112,7 +112,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
-            Authorization: `Bearer ${env.BEARER_TOKEN}`,
+            Authorization: `Bearer ${BEARER_TOKEN}`,
           },
           body: JSON.stringify(document),
         });
