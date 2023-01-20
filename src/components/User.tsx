@@ -1,22 +1,26 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Button, Group, Stack, TextInput, Title } from '@mantine/core';
-import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 export const UserForm = ({ user }: { user: any }) => {
-  if (!user) {
-    return null;
-  }
+  const router = useRouter();
+  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [id, setId] = useState('');
 
-  console.log(user);
+  useEffect(() => {
+    if (user) {
+      setName(user.name);
+      setUsername(user.username);
+      setEmail(user.email);
+      setId(user.id);
+    }
+  }, [user]);
 
-  const [name, setName] = useState(user.name);
-  const [username, setUsername] = useState(user.username);
-  const [email, setEmail] = useState(user.email);
-  const [password, setPassword] = useState(user.password);
-  const [id, setId] = useState(user.id);
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const updatedUser = {
@@ -24,21 +28,37 @@ export const UserForm = ({ user }: { user: any }) => {
       name,
       username,
       email,
-      password,
     };
+
+    const response = await fetch(`/api/users/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedUser),
+    });
+
+    if (!response.ok) {
+      console.log(response);
+      return;
+    }
+
+    console.log(response);
+
+    // router.push('/');
   };
 
   return (
     <>
       <Title order={2}>Edit User</Title>
-      <form className="flex flex-col">
+      <form onSubmit={handleSubmit}>
         <Stack>
           <TextInput
             label="Name"
             type="text"
             id="name"
             placeholder="Name"
-            value={user.name}
+            value={name}
             onChange={(e) => setName(e.target.value)}
           />
 
@@ -47,7 +67,7 @@ export const UserForm = ({ user }: { user: any }) => {
             type="text"
             id="username"
             placeholder="Username"
-            value={user.username}
+            value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
 
@@ -56,17 +76,8 @@ export const UserForm = ({ user }: { user: any }) => {
             type="email"
             id="email"
             placeholder="Email"
-            value={user.email}
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
-          />
-
-          <TextInput
-            label="Password"
-            type="password"
-            id="password"
-            placeholder="Password"
-            value={user.password}
-            onChange={(e) => setPassword(e.target.value)}
           />
           <Group position="right" spacing="lg">
             <Button color="red" variant="outline">

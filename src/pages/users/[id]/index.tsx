@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import { UserForm } from '../../../components/User';
-import { fetcher } from '../../../lib/fetcher';
+import { fetcher } from '../../../lib/constants';
 
 const EditUser = () => {
   const router = useRouter();

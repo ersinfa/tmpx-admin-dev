@@ -1,6 +1,7 @@
 import { AppShell, Image, Navbar, Stack, Text } from '@mantine/core';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { AwsFiles } from './AwsFiles';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -33,6 +34,7 @@ export const Layout = ({ children }: LayoutProps) => {
       })}
     >
       {children}
+      <AwsFiles />
     </AppShell>
   );
 };

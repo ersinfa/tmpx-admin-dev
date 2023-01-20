@@ -1,7 +1,7 @@
 import { Button, Card, Divider, Grid, Group, Text, Title } from '@mantine/core';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
-import { fetcher } from '../../lib/fetcher';
+import { fetcher } from '../../lib/constants';
 
 const Sessions = () => {
   const { data, isLoading } = useSWR('api/sessions', fetcher);

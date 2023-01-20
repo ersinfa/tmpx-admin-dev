@@ -3,7 +3,7 @@ import { type NextPage } from 'next';
 import Link from 'next/link';
 import { useState } from 'react';
 import useSWR from 'swr';
-import { fetcher } from '../lib/fetcher';
+import { fetcher } from '../lib/constants';
 
 const Home: NextPage = () => {
   const { data, isLoading } = useSWR('/api/users', fetcher);

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { env } from '../../../env/server.mjs';
-import { BASE_URL } from '../../../lib/db';
+import { BASE_URL } from '../../../lib/constants';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const users = await fetch(`${BASE_URL}/users`, {
