@@ -4,8 +4,8 @@ const s3Config = {
   bucketName: 'tmpx-bucket',
   dirName: 'app',
   region: 'us-west-1',
-  accessKeyId: 'AKIAQXRT2HLLFS57RNM3',
-  secretAccessKey: '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',
+  accessKeyId: '',
+  secretAccessKey: '',
   s3Url: 'https://tmpx-bucket.s3.us-west-1.amazonaws.com',
 };
 
